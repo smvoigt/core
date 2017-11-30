@@ -17,16 +17,18 @@ if { $execMode == "interactive" } {
 array set g_node_types_default {
 	1 {router router.gif router.gif {zebra OSPFv2 OSPFv3 IPForward} \
 	    netns {built-in type for routing}}
-	2 {host host.gif host.gif {DefaultRoute SSH} \
+	2 {routerprobe probe.gif probe.gif {zebra OSPFv2 OSPFv3 IPForward RouteProbe PacketProbe} \
+	    netns {router with packet and route probes enabled}}
+	3 {host host.gif host.gif {DefaultRoute SSH} \
 	    netns {built-in type for servers}}
-	3 {PC pc.gif pc.gif {DefaultRoute} \
+	4 {PC pc.gif pc.gif {DefaultRoute} \
 	    netns {built-in type for end hosts}}
-	4 {mdr mdr.gif mdr.gif {zebra OSPFv3MDR IPForward} \
+	5 {mdr mdr.gif mdr.gif {zebra OSPFv3MDR IPForward} \
 	    netns {built-in type for wireless routers}}
-	5 {prouter router_green.gif router_green.gif \
+	6 {prouter router_green.gif router_green.gif \
 	    {zebra OSPFv2 OSPFv3 IPForward} \
 	    physical {built-in type for physical nodes}}
-	6 {xen xen.gif xen.gif {zebra OSPFv2 OSPFv3 IPForward} \
+	7 {xen xen.gif xen.gif {zebra OSPFv2 OSPFv3 IPForward} \
 	    xen {built-in type for Xen PVM domU router}}
 }
 
