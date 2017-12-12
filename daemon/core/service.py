@@ -264,7 +264,7 @@ class CoreServices(ConfigurableManager):
         # Introduce a small wait, Quagga doesn't seem to read the config files
         # in all cases. This is an intermittent problem, the sleep is trying
         # to see if it is because the config files haven't been written yet?
-        time.sleep(0.01)
+        time.sleep(0.02)
         if useStartupService and not self.isStartupService(s):
             return
         for cmd in s.getstartup(node, services):
