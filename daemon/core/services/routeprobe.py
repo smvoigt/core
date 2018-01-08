@@ -17,7 +17,7 @@ class RouteProbeService(CoreService):
     #  e.g. /tmp/pycore.12345/n1.conf/)
     _configs = ('routeprobeservice.sh','getserverip.py',)
     # this controls the starting order vs other enabled services
-    _startindex = 40
+    _startindex = 50
     # list of startup commands, also may be generated during startup
     _startup = ('bash routeprobeservice.sh',)
     # list of shutdown commands

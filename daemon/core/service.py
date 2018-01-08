@@ -16,7 +16,6 @@ services.
 
 import sys, os, shlex
 import imp
-import time
 
 from itertools import repeat
 from core.api import coreapi
@@ -261,10 +260,6 @@ class CoreServices(ConfigurableManager):
         for filename in s.getconfigfilenames(node.objid, services): 
             cfg = s.generateconfig(node,  filename, services)
             node.nodefile(filename,  cfg)
-        # Introduce a small wait, Quagga doesn't seem to read the config files
-        # in all cases. This is an intermittent problem, the sleep is trying
-        # to see if it is because the config files haven't been written yet?
-        time.sleep(0.02)
         if useStartupService and not self.isStartupService(s):
             return
         for cmd in s.getstartup(node, services):
