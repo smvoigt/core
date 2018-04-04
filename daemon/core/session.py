@@ -771,11 +771,16 @@ class Session(object):
             request flag.
         '''
         with self._objslock:
+            # Random failures were occuring when the ctrlnet was created just prior to booting the node. 
+            # So add the ctrlnets to each node first and then boot each node.
             for n in self.objs():
                 if isinstance(n, nodes.PyCoreNode) and \
                   not isinstance(n, nodes.RJ45Node):
                     # add a control interface if configured
-                    self.addremovectrlif(node=n, remove=False)
+                    self.addremovectrlif(node=n, remove=False)                                    
+            for n in self.objs():
+                if isinstance(n, nodes.PyCoreNode) and \
+                  not isinstance(n, nodes.RJ45Node):
                     n.boot()
                 self.sendnodeemuid(handler, n.objid)
         self.updatectrlifhosts()
